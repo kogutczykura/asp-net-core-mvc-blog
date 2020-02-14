@@ -24,7 +24,10 @@
             <th>
                 Author
             </th>
-            <th></th>
+            <th>
+                Image
+            </th>
+            <th>Akcje</th>
         </tr>
     </thead>
     <tbody>
@@ -41,6 +44,9 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.CreatedBy.Email)
+            </td>
+            <td>
+                <img src="@Html.DisplayFor(modelItem => item.ImageUrl)" width="50" height="50"/>
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |

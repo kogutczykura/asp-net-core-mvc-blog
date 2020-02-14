@@ -23,7 +23,12 @@ namespace Blog
         // GET: Posts
         public async Task<IActionResult> Index()
         {
-            var posts = await _context.Posts.ToListAsync();
+            var posts = _context.Posts.ToList();
+            posts.ForEach(post =>
+            {
+                post.CreatedBy = _context.Users.Find(post.CreatedById);
+            });
+
             return View(posts);
         }
 
@@ -56,7 +61,7 @@ namespace Blog
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Title,Content,Description")] Post post)
+        public async Task<IActionResult> Create([Bind("Id,Title,Content,Description,ImageUrl")] Post post)
         {
             if (ModelState.IsValid && HttpContext.User.Identity.IsAuthenticated == true)
             {
@@ -90,7 +95,7 @@ namespace Blog
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(long id, [Bind("Id,Title,Content,Description")] Post post)
+        public async Task<IActionResult> Edit(long id, [Bind("Id,Title,Content,Description,ImageUrl")] Post post)
         {
             if (id != post.Id)
             {

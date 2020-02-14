@@ -1,8 +1,21 @@
-﻿@{
+﻿@model IEnumerable<Blog.Models.Post>
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+    <div class="text-center">
+        <h1 class="display-4">Welcome</h1>
+        @foreach (var item in Model)
+        {
+    <div>
+        <h1>
+            @Html.DisplayFor(modelItem => item.Title)
+        </h1>
+        <img src="@Html.DisplayFor(modelItem => item.ImageUrl)" width="200" height="200" />
+
+        <div>@Html.DisplayFor(modelItem => item.Description)</div>
+        <div>@Html.DisplayFor(modelItem => item.CreatedBy.Email)</div>
+        <a class="nav-link text-dark"  href="/Posts/Details/@Html.DisplayFor(modelItem => item.Id)">Więcej info</a>
+    </div>
+        }
+    </div>

@@ -12,7 +12,8 @@ namespace Blog.Models
         [DataType(DataType.MultilineText)]
         public string Content { get; set; }
         public long PostId { get; set; }
+        public Post post { get; set; }
 
-        public virtual ICollection<Post> PostKey { get; set; }
+        
     }
 }

@@ -15,5 +15,7 @@ namespace Blog.Data
         }
 
         public DbSet<Post> Posts { get; set; }
+
+        public DbSet<Blog.Models.Comment> Comment { get; set; }
     }
 }

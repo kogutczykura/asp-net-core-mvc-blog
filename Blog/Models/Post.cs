@@ -18,5 +18,7 @@ namespace Blog.Models
         public string CreatedById { get; set; }
         public IdentityUser CreatedBy { get; set; }
         public string ImageUrl { get; set; }
+
+        public virtual ICollection<Comment> CommentKey { get; set; }
     }
 }

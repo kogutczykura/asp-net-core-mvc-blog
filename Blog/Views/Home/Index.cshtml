@@ -9,7 +9,7 @@
         {
     <div>
         <h1>
-            @Html.DisplayFor(modelItem => item.Title)
+            <a class="nav-link text-dark" href="/Posts/Details/@Html.DisplayFor(modelItem => item.Id)">@Html.DisplayFor(modelItem => item.Title)</a>
         </h1>
         <img src="@Html.DisplayFor(modelItem => item.ImageUrl)" width="600" height="500" />
 

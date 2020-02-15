@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Blog.Models;
 using Blog.Data;
+using Microsoft.AspNetCore.Identity;
 
 namespace Blog.Controllers
 {
@@ -15,8 +16,7 @@ namespace Blog.Controllers
         private readonly ILogger<HomeController> _logger;
         private readonly ApplicationDbContext _context;
 
-        public HomeController(ILogger<HomeController> logger, ApplicationDbContext context)
-        {
+        public HomeController(ILogger<HomeController> logger, ApplicationDbContext context) {
             _logger = logger;
             _context = context;
         }
@@ -28,7 +28,8 @@ namespace Blog.Controllers
             {
                 post.CreatedBy = _context.Users.Find(post.CreatedById);
             });
-
+           
+            
             return View(posts);
         }
 

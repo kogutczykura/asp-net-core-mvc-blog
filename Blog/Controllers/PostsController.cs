@@ -10,6 +10,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Blog.Controllers
 {
+    /**
+     * Tutaj wykorzystujemy automatycznie mapowanie controller na url. Ponieważ klasa nazywa się PostController i dziedziczy po Controller
+     * to metody z tej klasy będą mapowane na url /Posts
+     */
     public class PostsController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -18,12 +22,22 @@ namespace Blog.Controllers
         {
             this._context = _context;
         }
+
+        /*
+         * GET /Posts
+         * Nie musimy używać [HttpGet], ani [Route]. Ponieważ jest to controller to ta metoda zostanie automatycznie zmapowana na url GET /Posts
+         */
         public IActionResult Index()
         {
             return View();
         }
 
-        [HttpPost]
+        
+        /**
+         * Używamy atrybutu [HttpPost] ponieważ do tworzenia zasobów powinniśmy używać metody HTTP POST (nie musimy, ale powinniśmy).
+         * Bez tego atrybutu wszystkie metody HTTP będą mogły być wykonane na tej metodzie klasy, więc nie jest potrzebna do działa (technicznie).
+         */
+        // [HttpPost] // Dzieki tej adnotacji metoda CommentPost klasy PostsController odpowie tylko na zapytania HTTP POST
         public async Task<IActionResult> CommentPost(CommentPostRequest commentPostRequest)
         {
 
@@ -44,6 +58,7 @@ namespace Blog.Controllers
             });
         }
 
+        // GET /Posts/Details/{id}
         public async Task<IActionResult> Details(long id)
         {
             var post = _context.Posts.Include("CommentKey").Where(post => post.Id == id).First();

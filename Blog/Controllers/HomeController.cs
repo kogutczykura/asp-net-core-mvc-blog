@@ -8,6 +8,7 @@ using Microsoft.Extensions.Logging;
 using Blog.Models;
 using Blog.Data;
 using Microsoft.AspNetCore.Identity;
+using System.Security.Claims;
 
 namespace Blog.Controllers
 {
@@ -23,6 +24,7 @@ namespace Blog.Controllers
 
         public IActionResult Index()
         {
+            var inRole = User.HasClaim(ClaimTypes.Role, "Admin");
             var posts = _context.Posts.ToList();
             posts.ForEach(post =>
             {

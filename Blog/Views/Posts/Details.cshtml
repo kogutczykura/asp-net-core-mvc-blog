@@ -4,7 +4,7 @@
     ViewData["Title"] = @ViewBag.post.Title;
 }
 
-<h1>PostsDetails</h1>
+<h1>Szczegóły postu</h1>
 
 <hr />
 <img src="@ViewBag.post.ImageUrl" width="200" height="200" />
@@ -12,14 +12,14 @@
 <dl class="row">
    
     <dt class="col-sm-2">
-        Content
+        Zawartość
     </dt>
     <dd class="col-sm-10">
         @ViewBag.post.Content;
     </dd>
 
     <dt class="col-sm-2">
-        Description
+        Opis
     </dt>
     <dd class="col-sm-10">
         @ViewBag.post.Description;
@@ -28,7 +28,7 @@
 
 <div class="row">
     <div class="col-md-10">
-        <h3>Leave a comment</h3>
+        <h3>Zostaw komentarz</h3>
         <form asp-action="CommentPost">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" name="postId" value="@ViewBag.post.Id" />
@@ -38,7 +38,7 @@
             </div>
 
             <div class="form-group">
-                <input type="submit" value="Add Comment" class="btn btn-primary" />
+                <input type="submit" value="Dodaj komentarz" class="btn btn-primary" />
             </div>
         </form>
     </div>
@@ -46,7 +46,7 @@
 
 @if (ViewBag.post.CommentKey != null)
 {
-    <h3>Comments:</h3>
+    <h3>Komentarze:</h3>
     @foreach (Comment comment in ViewBag.post.CommentKey)
     {
         <div class="card p-3">

@@ -4,26 +4,26 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<h1>Szczegóły</h1>
 
 <div>
-    <h4>Comment</h4>
+    <h4>Komentarz</h4>
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Content)
+            Zawartość
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Content)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.PostId)
+            Id komentarza
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.PostId)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.post.CommentKey)
+            Komentarze
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.post.CommentKey)
@@ -32,6 +32,6 @@
 </div>
     
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edytuj</a> |
+    <a asp-action="Index">Wróć do listy</a>
 </div>
